@@ -52,6 +52,8 @@
             ''
               pve-contract request ${./examples/project.json}
               pve-contract handoff ${./examples/handoff.json}
+              jq 'del(.codelab)' ${./examples/handoff.json} > no-development-host.json
+              pve-contract handoff no-development-host.json
               jq '. + {api_token: "not-a-secret"}' ${./examples/handoff.json} > forbidden.json
               if pve-contract handoff forbidden.json; then
                 echo "handoff accepted credential-bearing metadata" >&2; exit 1

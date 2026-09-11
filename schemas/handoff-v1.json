@@ -19,7 +19,6 @@
     "private_mtu",
     "cidr",
     "vmid_range",
-    "codelab",
     "operator_keys"
   ],
   "properties": {
@@ -103,7 +102,8 @@
       "minItems": 2
     },
     "codelab": {
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Optional platform-managed attachment of a development host; legacy field name retained for compatibility."
     },
     "operator_keys": {
       "type": "array",
