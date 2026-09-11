@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "project": "example",
+  "description": "Synthetic project example",
+  "vmid_range": [
+    1000,
+    1099
+  ],
+  "storage": [
+    "ssd",
+    "hdd"
+  ],
+  "network": {
+    "vnet": "example",
+    "cidr": "10.42.0.0/24"
+  },
+  "codelab": false
+}

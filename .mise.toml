@@ -1,0 +1,13 @@
+[tools]
+opentofu = "1.12.6"
+
+[tasks.check]
+description = "Validate contracts, mock-plan VM behavior, and build the generic guest; no platform access"
+run = """
+set -eu
+tofu fmt -check -recursive modules
+tofu -chdir=modules/vm init -backend=false -input=false -lockfile=readonly
+tofu -chdir=modules/vm validate
+tofu -chdir=modules/vm test
+nix flake check
+"""
