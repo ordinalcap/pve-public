@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordinalcap.github.io/pve-public/schemas/handoff-v1.json",
+  "title": "Nonsecret platform handoff v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project",
+    "pool",
+    "user",
+    "api_endpoint",
+    "node",
+    "template_vmid",
+    "storages",
+    "ssd_storages",
+    "public_bridge",
+    "vnet",
+    "private_mtu",
+    "cidr",
+    "vmid_range",
+    "codelab",
+    "operator_keys"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "project": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,30}$"
+    },
+    "pool": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,30}$"
+    },
+    "user": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,30}@pve$"
+    },
+    "api_endpoint": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "node": {
+      "type": "string",
+      "minLength": 1
+    },
+    "template_vmid": {
+      "type": "integer",
+      "minimum": 100
+    },
+    "storages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "ssd_storages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "public_bridge": {
+      "type": "string",
+      "minLength": 1
+    },
+    "vnet": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9]{1,7}$"
+    },
+    "private_mtu": {
+      "type": "integer",
+      "minimum": 1280,
+      "maximum": 65520
+    },
+    "cidr": {
+      "type": "string",
+      "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}/24$"
+    },
+    "vmid_range": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 999999999
+        },
+        {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 999999999
+        }
+      ],
+      "items": false,
+      "minItems": 2
+    },
+    "codelab": {
+      "type": "boolean"
+    },
+    "operator_keys": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(ssh-ed25519|ssh-rsa|ecdsa-sha2-nistp(256|384|521)) [A-Za-z0-9+/]+={0,3}( .*)?$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

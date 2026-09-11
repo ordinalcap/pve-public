@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "project": "example",
+  "pool": "example",
+  "user": "example@pve",
+  "api_endpoint": "https://pve.example.invalid:8006/",
+  "node": "node-example",
+  "template_vmid": 900,
+  "storages": [
+    "fast-store",
+    "bulk-store"
+  ],
+  "ssd_storages": [
+    "fast-store"
+  ],
+  "public_bridge": "br-public",
+  "vnet": "example",
+  "private_mtu": 1500,
+  "cidr": "10.42.0.0/24",
+  "vmid_range": [
+    1000,
+    1099
+  ],
+  "codelab": false,
+  "operator_keys": [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA example-only"
+  ]
+}
